@@ -46,9 +46,49 @@ public class appTest extends TestCase{
 		App game = new App();
 		List<Card> deck = new ArrayList<Card>();
 		List<Card> hand = new ArrayList<Card>();
-
 		deck.add(new Card("S","K"));
-		assertEquals(10,game.drawCard(hand,deck,0));
+		assertEquals(10,game.drawCard(hand,deck)
+);
 		
+	}
+	public void testblackjack() {
+		App game = new App();
+
+		List<Card> hand = new ArrayList<Card>();
+		hand.add(new Card("S","K"));
+		hand.add(new Card("H","A"));
+		
+		List<Card> hand2 = new ArrayList<Card>();
+		hand2.add(new Card("S","K"));
+		hand2.add(new Card("H","2"));
+		
+		assertEquals(true,game.blackjack(hand));
+		assertEquals(false,game.blackjack(hand2));
+
+	}
+	public void testwincheck() {
+		App game = new App();
+
+		int dealer = 21;
+		int player = 10;
+		
+		assertEquals(true,game.winCheck(dealer,player));
+		
+		dealer = 2;
+		player=21;
+		assertEquals(true,game.winCheck(dealer,player));
+		dealer = 8;
+		player=8;
+		assertEquals(false,game.winCheck(dealer,player));
+		dealer = 8;
+		player=6;
+		assertEquals(false,game.winCheck(dealer,player));
+		dealer = 9;
+		player=12;
+		assertEquals(false,game.winCheck(dealer,player));
+		dealer = 2;
+		player=25;
+		assertEquals(true,game.winCheck(dealer,player));
+
 	}
 }
