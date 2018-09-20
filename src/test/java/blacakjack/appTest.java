@@ -34,4 +34,13 @@ public class appTest extends TestCase{
 		assertEquals(3,deck.get(3).getvalue());
 
 	}
+	public void testinitdeck() {
+		App game = new App();
+		List<Card> deck = new ArrayList<Card>();
+			deck=	game.initDeck();
+		for(int i=0; i<deck.size(); i++) {
+			System.out.println((deck.get(i)).toString());
+		}
+		System.out.println("total cards: "+deck.size());
+	}
 }

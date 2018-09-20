@@ -10,11 +10,11 @@ public class App {
 	public static final String[] rank = {"A", "2", "3", "4", "5", "7", "8", "9", "10", "J", "Q", "K"};
 	
 	//constructing a new deck
-	public List<Card> initDeck(String[] suites,String[] rank ){
+	public List<Card> initDeck(){
 		List<Card> newDeck = new ArrayList<Card>();
-		for(int i = 0; i<suites.length; i++) {
+		for(int i = 0; i<suite.length; i++) {
 			for(int j=0; j<rank.length; j++) {
-				Card c = new Card(rank[j], suites[i]);
+				Card c = new Card(suite[i], rank[j]);
 				newDeck.add(c);
 			}
 		}
