@@ -18,6 +18,7 @@ public class App {
 				newDeck.add(c);
 			}
 		}
+		Collections.shuffle(newDeck);
 		return newDeck;
 	}
 	
@@ -39,8 +40,23 @@ public class App {
 	    return fileDeck;
 	}
 	
-	
+	//moves a card from deck to hand, returns new total value of the hand
+		public int drawCard(List<Card> hand, List<Card> deck, int playertotal) {
+			int total;
+			Card card = deck.remove(0);
+			System.out.println("draws: " + card.toString());
+			total = card.getvalue() + playertotal;
+			hand.add(card);
+			return total;
+		}
 	public static void main(String[] args) {
+		System.out.println("Welcome to BlackJack");
+		
+		//initial data
+		List<Card> playersCards = new ArrayList<Card>(); 
+		List<Card> dealersCards = new ArrayList<Card>();
+		int playertotal =0;
+		int dealertotal =0;
 		
 		Scanner reader = new Scanner(System.in);
 		System.out.println("Select console(c) input or file (F) input");

@@ -20,7 +20,6 @@ public class appTest extends TestCase{
 
 	}
 	public void testCardValue() {
-		App game = new App();
 		List<Card> deck = new ArrayList<Card>();
 		deck.add(new Card("S","K"));
 		deck.add(new Card("H","A"));
@@ -39,8 +38,17 @@ public class appTest extends TestCase{
 		List<Card> deck = new ArrayList<Card>();
 			deck=	game.initDeck();
 		for(int i=0; i<deck.size(); i++) {
-			System.out.println((deck.get(i)).toString());
+			System.out.print((deck.get(i)).toString());
 		}
 		System.out.println("total cards: "+deck.size());
+	}
+	public void testdrawcard() {
+		App game = new App();
+		List<Card> deck = new ArrayList<Card>();
+		List<Card> hand = new ArrayList<Card>();
+
+		deck.add(new Card("S","K"));
+		assertEquals(10,game.drawCard(hand,deck,0));
+		
 	}
 }

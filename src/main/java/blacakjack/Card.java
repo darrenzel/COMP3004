@@ -14,6 +14,7 @@ public class Card {
 		this.rank = rank;
 		this.value = this.getvalue();
 	}
+	//get value of the card
 	public int getvalue() {
 		if(this.rank.equals("J")||this.rank.equals("Q")||this.rank.equals("K")){
 			return 10;
