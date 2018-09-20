@@ -20,22 +20,26 @@ public class App {
 		}
 		return newDeck;
 	}
+	
+	
 	//read from a file, assuming all data is valid cards
-		public static List<Card> readFileInput(String file){
-			Scanner reader = null;
-			List<Card> fileDeck = new ArrayList<Card>();
-		    try {
-		        reader = new Scanner(new File(file));
-		    } catch (FileNotFoundException error) {
-		        error.printStackTrace();  
-		    }
-		    while(reader.hasNext()) {
-		    	String cardString = reader.next();
-		    	Card nextCard = new Card(Character.toString(cardString.toCharArray()[0]),Character.toString(cardString.toCharArray()[1]));
-		    	fileDeck.add(nextCard);
-		    }
-		    return fileDeck;
-		}
+	public static List<Card> readFileInput(String file){
+		Scanner reader = null;
+		List<Card> fileDeck = new ArrayList<Card>();
+	    try {
+	        reader = new Scanner(new File(file));
+	    } catch (FileNotFoundException error) {
+	        error.printStackTrace();  
+	    }
+	    while(reader.hasNext()) {
+	    	String cardString = reader.next();
+	    	Card nextCard = new Card(Character.toString(cardString.toCharArray()[0]),Character.toString(cardString.toCharArray()[1]));
+	    	fileDeck.add(nextCard);
+	    }
+	    return fileDeck;
+	}
+	
+	
 	public static void main(String[] args) {
 		
 		Scanner reader = new Scanner(System.in);
