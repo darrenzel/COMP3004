@@ -1,22 +1,13 @@
 package blacakjack;
 import java.util.*;
-
+import java.io.*;
+//import java.lang.*;
 public class App {
 	
-	//creating a Card object
-	public class Card{
-		private String suite;
-		private String rank;
-		
-		//creating card constructor
-		public Card(String suite, String rank) {
-			this.suite = suite;
-			this.rank = rank;
-		}
-	}
-	//sa
+	
+	
 	public static final String[] suite = {"H", "S", "C", "D"};
-	public static final String[] rank = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+	public static final String[] rank = {"A", "2", "3", "4", "5", "7", "8", "9", "10", "J", "Q", "K"};
 	
 	//constructing a new deck
 	public List<Card> initDeck(String[] suites,String[] rank ){
@@ -29,6 +20,22 @@ public class App {
 		}
 		return newDeck;
 	}
+	//read from a file, assuming all data is valid cards
+		public static List<Card> readFileInput(String file){
+			Scanner reader = null;
+			List<Card> fileDeck = new ArrayList<Card>();
+		    try {
+		        reader = new Scanner(new File(file));
+		    } catch (FileNotFoundException error) {
+		        error.printStackTrace();  
+		    }
+		    while(reader.hasNext()) {
+		    	String cardString = reader.next();
+		    	Card nextCard = new Card(Character.toString(cardString.toCharArray()[0]),Character.toString(cardString.toCharArray()[1]));
+		    	fileDeck.add(nextCard);
+		    }
+		    return fileDeck;
+		}
 	public static void main(String[] args) {
 		
 		Scanner reader = new Scanner(System.in);
@@ -37,9 +44,10 @@ public class App {
 		
 		if(s=="F"||s=="f") {
 			//use file input to play the game
+			List<Card> deck = new ArrayList<Card>();
 			System.out.println("please enter the file name");
 			String a = reader.next();
-			readFileInput(a);
+			deck = readFileInput(a);
 		}else if(s=="C"||s=="c") {
 			//use console to start the game
 			
@@ -50,7 +58,7 @@ public class App {
 	
 		
 		//List<Cards> deck = new ArrayList<Cards>();
-		
+		reader.close();
 	}
 	 
 }
